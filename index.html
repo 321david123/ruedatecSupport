@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RuedaTec – Soporte</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0D1117;
+      --card:     #161B22;
+      --border:   #30363D;
+      --accent:   #00C9A7;
+      --text:     #F0F6FC;
+      --muted:    #8B949E;
+      --danger:   #F85149;
+      --warning:  #D29922;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    nav .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    nav .brand { font-size: 18px; font-weight: 700; color: var(--text); }
+    nav .badge {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 2px 10px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .hero h1 { font-size: 42px; font-weight: 800; letter-spacing: -1px; }
+    .hero h1 span { color: var(--accent); }
+    .hero p { margin-top: 16px; color: var(--muted); font-size: 17px; }
+
+    /* ── SECTIONS ── */
+    main { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+
+    section { margin-bottom: 48px; }
+    section h2 {
+      font-size: 22px; font-weight: 700;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    section h2 .icon {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+    .card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .card p  { font-size: 14px; color: var(--muted); }
+
+    /* ── STEPS ── */
+    .steps { list-style: none; }
+    .steps li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .steps li p { font-size: 14px; color: var(--muted); margin-top: 2px; }
+
+    /* ── COMMAND TABLE ── */
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th {
+      text-align: left; padding: 10px 14px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted); font-weight: 600;
+    }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    .cmd {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700; font-size: 13px;
+      border-radius: 6px; padding: 2px 8px;
+      font-family: monospace;
+    }
+
+    /* ── WARNING BOX ── */
+    .warning-box {
+      background: rgba(210,153,34,0.08);
+      border: 1px solid rgba(210,153,34,0.3);
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+    .warning-box h3 { color: var(--warning); margin-bottom: 8px; }
+    .warning-box ul { padding-left: 18px; }
+    .warning-box li { font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+
+    /* ── CONTACT ── */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+    }
+    .contact-card p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+    .contact-card a {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    .contact-card a:hover { opacity: 0.9; }
+
+    /* ── PRIVACY ── */
+    .privacy-section { border-top: 1px solid var(--border); padding-top: 48px; }
+    .privacy-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; }
+    .privacy-section h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; }
+    .privacy-section p, .privacy-section li { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+    .privacy-section ul { padding-left: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo-mark">♿</div>
+    <span class="brand">RuedaTec</span>
+    <span class="badge">Soporte</span>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Hola, ¿cómo podemos <span>ayudarte?</span></h1>
+    <p>Centro de soporte oficial de la app RuedaTec para iOS.</p>
+  </div>
+
+  <main>
+
+    <!-- GETTING STARTED -->
+    <section>
+      <h2><span class="icon">🚀</span> Primeros pasos</h2>
+      <div class="card">
+        <ol class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div>
+              <strong>Enciende tu dispositivo RuedaTec</strong>
+              <p>Asegúrate de que el LED Bluetooth esté parpadeando antes de abrir la app.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div>
+              <strong>Abre RuedaTec en tu iPhone</strong>
+              <p>Permite el acceso a Bluetooth cuando iOS te lo solicite.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div>
+              <strong>Pulsa "Buscar dispositivos"</strong>
+              <p>La app escaneará dispositivos BLE cercanos durante 12 segundos.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div>
+              <strong>Selecciona "RuedaTecPro"</strong>
+              <p>Toca el dispositivo en la lista para conectarte.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div>
+              <strong>¡Listo!</strong>
+              <p>La app te llevará automáticamente a la pantalla de controles.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTROLS -->
+    <section>
+      <h2><span class="icon">🎮</span> Controles</h2>
+      <div class="card">
+        <table>
+          <thead>
+            <tr><th>Acción</th><th>Comando</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Adelante</td><td><span class="cmd">F</span></td><td>Ambas ruedas hacia adelante</td></tr>
+            <tr><td>Atrás</td><td><span class="cmd">B</span></td><td>Ambas ruedas hacia atrás</td></tr>
+            <tr><td>Izquierda</td><td><span class="cmd">L</span></td><td>Tank turn — giro sobre el eje</td></tr>
+            <tr><td>Derecha</td><td><span class="cmd">R</span></td><td>Tank turn — giro sobre el eje</td></tr>
+            <tr><td>Diagonal ↖</td><td><span class="cmd">G</span></td><td>Adelante con curva izquierda</td></tr>
+            <tr><td>Diagonal ↗</td><td><span class="cmd">I</span></td><td>Adelante con curva derecha</td></tr>
+            <tr><td>Diagonal ↙</td><td><span class="cmd">H</span></td><td>Atrás con curva izquierda</td></tr>
+            <tr><td>Diagonal ↘</td><td><span class="cmd">J</span></td><td>Atrás con curva derecha</td></tr>
+            <tr><td>Parar</td><td><span class="cmd">S</span></td><td>Detiene ambos motores</td></tr>
+            <tr><td>Freno total</td><td><span class="cmd">W</span></td><td>Freno de emergencia activo</td></tr>
+            <tr><td>Velocidad</td><td><span class="cmd">0–9</span></td><td>Ajuste de velocidad (0=mín, 9=máx)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <h2><span class="icon">❓</span> Preguntas frecuentes</h2>
+
+      <div class="card">
+        <h3>El dispositivo no aparece en la lista</h3>
+        <p>Asegúrate de que el ESP32 esté encendido y el firmware BLE esté instalado. El Bluetooth Clásico no es compatible con iOS — el dispositivo debe usar BLE (Nordic UART Service).</p>
+      </div>
+
+      <div class="card">
+        <h3>La app se desconecta sola</h3>
+        <p>Verifica que el iPhone esté a menos de 10 metros del dispositivo. Objetos metálicos o paredes gruesas pueden reducir el alcance. Mantén la app en primer plano para mejor rendimiento.</p>
+      </div>
+
+      <div class="card">
+        <h3>Los motores no responden</h3>
+        <p>Comprueba que el freno de emergencia no esté activado (botón rojo en la pantalla de controles). Si está activo, tócalo para desactivarlo.</p>
+      </div>
+
+      <div class="card">
+        <h3>La app pide permiso de Bluetooth</h3>
+        <p>Es necesario para conectarse al dispositivo. Si rechazaste el permiso, ve a Ajustes → RuedaTec → activa Bluetooth.</p>
+      </div>
+
+      <div class="card">
+        <h3>¿Es compatible con Android?</h3>
+        <p>Actualmente RuedaTec está disponible solo para iOS. La versión Android está en desarrollo.</p>
+      </div>
+    </section>
+
+    <!-- SAFETY -->
+    <section>
+      <div class="warning-box">
+        <h3>⚠️ Seguridad</h3>
+        <ul>
+          <li>Verifica siempre que el área esté despejada antes de moverte.</li>
+          <li>Al perder la conexión Bluetooth, la silla se detiene automáticamente.</li>
+          <li>Usa el freno de emergencia siempre que necesites detenerte de forma segura.</li>
+          <li>No uses la app mientras caminas o en situaciones de riesgo.</li>
+          <li>Mantén el iPhone cargado y cerca del dispositivo durante el uso.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <h2><span class="icon">✉️</span> Contacto</h2>
+      <div class="contact-card">
+        <p>¿No encontraste lo que buscabas? Escríbenos y te respondemos a la brevedad.</p>
+        <a href="mailto:support@ruedatec.com">Enviar mensaje</a>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section class="privacy-section">
+      <h2>Política de Privacidad</h2>
+      <p><em>Última actualización: 1 de marzo de 2026</em></p>
+
+      <h3>1. Información que recopilamos</h3>
+      <p>RuedaTec no recopila, almacena ni transmite ningún dato personal. La app funciona completamente de forma local en tu dispositivo.</p>
+
+      <h3>2. Bluetooth</h3>
+      <p>La app utiliza Bluetooth Low Energy (BLE) únicamente para comunicarse con tu dispositivo RuedaTec. No se transmite ningún dato a servidores externos.</p>
+
+      <h3>3. Datos de uso</h3>
+      <p>No utilizamos servicios de analítica ni rastreo. No recopilamos información sobre cómo usas la app.</p>
+
+      <h3>4. Datos de terceros</h3>
+      <p>RuedaTec no comparte ningún dato con terceros porque no recopila ningún dato.</p>
+
+      <h3>5. Menores de edad</h3>
+      <p>La app no recopila información de ningún usuario, incluyendo menores de edad.</p>
+
+      <h3>6. Cambios a esta política</h3>
+      <p>Cualquier cambio a esta política de privacidad será publicado en esta página.</p>
+
+      <h3>7. Contacto</h3>
+      <p>Para preguntas sobre privacidad: <a href="mailto:support@ruedatec.com" style="color: var(--accent);">support@ruedatec.com</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 RuedaTec. Todos los derechos reservados. &nbsp;·&nbsp; <a href="#privacy-section">Privacidad</a></p>
+  </footer>
+
+</body>
+</html>
